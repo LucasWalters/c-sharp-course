@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>c_sharp_course</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ExposedObject\ExposedObject.Tests\**" />
+    <EmbeddedResource Remove="ExposedObject\ExposedObject.Tests\**" />
+    <None Remove="ExposedObject\ExposedObject.Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="BuildProcessTemplates\DefaultTemplate.11.1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="BuildProcessTemplates\DefaultTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="BuildProcessTemplates\LabDefaultTemplate.11.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="BuildProcessTemplates\UpgradeTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+</Project>
