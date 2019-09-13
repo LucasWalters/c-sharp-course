@@ -115,6 +115,30 @@ namespace c_sharp_course
         #endregion
 
         /// <summary>
+        /// Here's a pretty complicated example of how to change value types data.
+        /// We change the value inside a DateTime variable using the hidden method __makeref
+        /// More info about __makeref: http://benbowen.blog/post/fun_with_makeref/
+        /// </summary>
+        #region REFLECTION_DATETIME
+        static void TestReflectionDateTime()
+        {
+            DateTime dateTime = DateTime.Now;
+
+            FieldInfo dateData = typeof(DateTime).GetField("_dateData",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+
+            Console.WriteLine(dateTime.ToString()); // Log date before change
+            Console.WriteLine(dateData.GetValue(dateTime)); // Log dateData before change
+
+            TypedReference typed = __makeref(dateTime);
+            dateData.SetValueDirect(typed, (ulong)0); // Change dateData
+
+            Console.WriteLine(dateTime.ToString()); // Log date after change - No difference
+            Console.WriteLine(dateData.GetValue(dateTime)); // Log dateData after change - No difference
+        }
+        #endregion
+
+        /// <summary>
         /// In this test we use a third party class called the ExposedObject
         /// Which can be used to make reflections a little bit easier.
         /// The example shows how to change private field values of a List object
