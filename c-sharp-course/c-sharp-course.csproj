@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="BuildProcessTemplates\DefaultTemplate.11.1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
